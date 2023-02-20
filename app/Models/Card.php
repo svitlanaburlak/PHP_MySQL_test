@@ -5,8 +5,9 @@ namespace App\Models;
 use App\Database;
 use PDO;
 
-class Card
+class Card extends CoreModel
 {
+    protected $id;
     protected $civility;
     protected $lastname;
     protected $firstname;
@@ -19,47 +20,9 @@ class Card
     protected $fax;
     protected $email;
     protected $url;
-    protected $table = "card";
-
-    /**
-     * @param int $id
-     * @return self
-     */
-    public function find($id)
+    protected static function tableName(): string
     {
-        $pdo = Database::getPDO();
-
-        $class_name = get_class($this);
-
-        $table_name = $this->table;
-
-        $sql = "SELECT * FROM `$table_name` WHERE `id` = $id";
-
-        $pdoStatement = $pdo->query($sql);
-
-        $object = $pdoStatement->fetchObject($class_name);
-
-        return $object;
-    }
-
-    /**
-     * @return self[] 
-     */
-    public function findAll()
-    {
-      $pdo = Database::getPDO();
-
-      $class_name = get_class( $this );
-
-      $table_name = $this->table;
-
-      $sql = "SELECT * FROM `$table_name`";
-
-      $pdoStatement = $pdo->query($sql);      
-
-      $objects = $pdoStatement->fetchAll( PDO::FETCH_CLASS, $class_name );
-      
-      return $objects;
+        return 'card';
     }
 
     /**
@@ -301,4 +264,26 @@ class Card
 
         return $this;
     }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    
 }

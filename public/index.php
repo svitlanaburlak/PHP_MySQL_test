@@ -19,10 +19,10 @@
     // Routes
     //--------------------------------------------
 
-    $router->map( "GET", "/list", [ 
-      "method"     => "list", 
-      "controller" => "App\Controllers\CardController" 
-    ], "card-list" );
+    // $router->map( "GET", "/list", [ 
+    //   "method"     => "list", 
+    //   "controller" => "App\Controllers\CardController" 
+    // ], "card-list" );
 
     $router->map( "POST", "/create", [ 
       "method"     => "create", 
@@ -41,7 +41,6 @@
 
 
     $matchingRouteInfos = $router->match();
-    // var_dump( $matchingRouteInfos );
 
     //==============================================
     // DISPATCHER

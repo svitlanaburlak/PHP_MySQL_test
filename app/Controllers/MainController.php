@@ -6,13 +6,15 @@ use App\Models\Card;
 
 class MainController extends CoreController
 {
+  /**
+    * @return void
+    */
   public function home()
   {
-    $cardModel  = new Card();
-    $homeCards = $cardModel->findAll();
+    // var_dump(Card::findAll());
 
     $this->show( "home", [
-      "homeCards"  => $homeCards,
+        'cards'  => Card::findAll(),
     ] );
   }
 

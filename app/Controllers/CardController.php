@@ -6,19 +6,18 @@ use App\Models\Card;
 
 class CardController extends CoreController
 {
-  public function list()
+  public function read(int $id)
   {
-    $cardModel  = new Card();
-    $homeCards = $cardModel->findAll();
-
-    $this->show( "home", [
-        "homeCards"  => $homeCards,
+    $card = Card::find($id);
+  
+    $this->show( "single", [
+        "card"  => $card,
     ] );
   }
 
   public function create()
   {
-
+    
   }
 
   public function update()

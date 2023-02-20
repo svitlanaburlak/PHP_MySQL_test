@@ -14,6 +14,7 @@ class CoreController
       $allCards = $cardModel->findAll();
 
       // var_dump( get_defined_vars() );
+      // var_dump($viewData);
 
       require_once __DIR__ . '/../Views/header.tpl.php';
       require_once __DIR__ . '/../Views/' . $viewName . '.tpl.php';
