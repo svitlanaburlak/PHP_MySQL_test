@@ -8,3 +8,11 @@ Nous vous proposons de programmer un petit module "annuaire" très simple, en re
 
 Nous serions également intéressés de savoir approximativement combien de temps cela vous prend en partant de zéro, sans utiliser Bootstrap ni de Frameworks et en évitant de s'appuyer sur les contrôles de champs par les navigateurs (contrôles préférentiels des champs de formulaire en javascript).
 A noter qu'en matière de responsive design, nous serons surtout sensible à l'adaptation de vos pages aux différentes tailles d'écran.
+
+
+## Installation
+
+1. Cloner le repo
+2. Creer `config.ini` avec des données de BDD comm dans `config.ini.exemple`
+3. Lancer `composer install` et `composer dump-autoload`
+4. Ouvrir `/public/index.php` 
