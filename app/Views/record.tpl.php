@@ -3,9 +3,6 @@
 /** @var string[] $errors */
 ?>
 
-
-<a href="<?= $router->generate('main-home') ?>">Retour</a>
-
 <?php
 if ($card->getId() > 0) {
     ?>
@@ -20,7 +17,7 @@ else {
 
 ?>
 
-<form action="" method="POST">
+<form action="" method="POST" class="main-form">
     <?php   
         if (isset($errors) && is_array($errors)) {
             var_dump($error);
@@ -33,6 +30,7 @@ else {
     ?>
 
     <div>
+      <p>Civilité: &#42;</p>
       <input type="radio" id="civility1" name="civility" value="Mme" />
       <label for="civility1">Mme</label>
 
@@ -93,7 +91,7 @@ else {
                 placeholder="Pays">
     </div>
     <div>
-        <label for="birthdate">Date de naissance:</label>
+        <label for="birthdate">Date de naissance: &#42;</label>
         <input type="date" 
                 id="birthdate" 
                 name="birthdate"
@@ -101,23 +99,25 @@ else {
                 min="1900-01-01">
     </div>
     <div>
-        <label for="phone">Téléphone:</label>
+        <label for="phone">Téléphone: &#42;</label>
         <input type="tel"
                 id="phone"
                 name="phone"
                 value="<?= $card->getPhone() ?>"
                 placeholder="Téléphone">
+        <small>Format: 0123456789</small>
     </div>
     <div>
-        <label for="fax">Fax:</label>
+        <label for="fax">Fax: &#42;</label>
         <input type="tel"
                 id="fax"
                 name="fax"
                 value="<?= $card->getFax() ?>"
                 placeholder="Fax">
+        <small>Format: 0123456789</small>
     </div>
     <div>
-        <label for="email">Email:</label>
+        <label for="email">Email: &#42;</label>
         <input type="text"
                 id="email"
                 name="email"
@@ -125,7 +125,7 @@ else {
                 placeholder="Email@email.com">
     </div>
     <div>
-        <label for="url" class="form-label">URL:</label>
+        <label for="url" class="form-label">URL: &#42;</label>
         <input type="text"
                 id="url"
                 name="url"
@@ -134,7 +134,9 @@ else {
     </div>
 
     <div>
-        <button type="submit">Valider</button>
+        <button class="main-button" type="submit">Valider</button>
     </div>
 </form>
+
+<a class="main-link" href="<?= $router->generate('main-home') ?>">Retour</a>
 

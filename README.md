@@ -15,4 +15,5 @@ A noter qu'en matière de responsive design, nous serons surtout sensible à l'a
 1. Cloner le repo
 2. Creer `config.ini` avec des données de BDD comm dans `config.ini.exemple`
 3. Lancer `composer install` et `composer dump-autoload`
-4. Ouvrir `/public/index.php` 
+4. Ouvrir [/public/index.php](public/index.php)
+5. Ficher de la base de données MySQL [ici](bdd.sql)

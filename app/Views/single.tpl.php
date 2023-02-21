@@ -2,12 +2,9 @@
 /** @var \App\Models\Card $card */
 ?>
 
-
-<a href="<?= $router->generate('main-home') ?>">Retour</a>
-
 <h2 class="main-title">Fiche <?= $card->getId() ?></h2>
 
-<table>
+<table class="main-list">
   <tr>
     <th>Civilité:</th>
     <td><?= $card->getCivility() ?></td>
@@ -60,3 +57,4 @@
 
 </table>
 
+<a class="main-link" alt="Retour à l'accueil" href="<?= $router->generate('main-home') ?>">Retour</a>

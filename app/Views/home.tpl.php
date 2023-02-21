@@ -2,8 +2,6 @@
 /** @var \App\Models\Card[] $cards */
 ?>
 
-<a href="<?= $router->generate('card-add', ['id' => null]) ?>">Ajouter</a>
-
 <h2 class="main-title">Les fiches</h2>
    <table class="main-list">
    <tr class="main-item">
@@ -19,15 +17,17 @@
    ?>
       <tr class="main-item">
          <td><?= $card->getId() ?></td>
-         <td><?= $card->getFirstname() ?></td>
          <td><?= $card->getLastname() ?></td>
+         <td><?= $card->getFirstname() ?></td>
          <td><?= $card->getEmail() ?></td>
          <td>
-            <a href="<?= $router->generate('card-read', ['id' => $card->getId()]) ?>">Voir</a>
-            <a href="<?= $router->generate('card-edit', ['id' => $card->getId()] ) ?>">Modifier</a>   
+            <a class="main-item--link" alt="Voir les details" href="<?= $router->generate('card-read', ['id' => $card->getId()]) ?>">&#9757;</a>
+            <a class="main-item--link" alt="Modifier la fiche" href="<?= $router->generate('card-edit', ['id' => $card->getId()] ) ?>">&#9998;</a>   
          </td>
       </tr>
    <?php
       }
    ?>
 </table>
+
+<a class="main-link" href="<?= $router->generate('card-add', ['id' => null]) ?>">Ajouter</a>

@@ -48,7 +48,6 @@ class CardController extends CoreController
         $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         $url = filter_input(INPUT_POST, 'url', FILTER_VALIDATE_URL);
 
-        // var_dump($card);
         $errors = self::checkInputs(
             $civility,
             $lname,
@@ -63,6 +62,7 @@ class CardController extends CoreController
             $email,
             $url,
         );
+        // TODO erros + validations
         var_dump($errors);
 
         $card = $id === null ? new Card() : Card::find($id);
@@ -151,6 +151,26 @@ class CardController extends CoreController
             $errors[] = 'Le prénom est invalide';
         }
 
+        if ($address === false) {
+            $errors[] = 'L\'adress est invalide';
+        }
+
+        if ($zipcode === false) {
+            $errors[] = 'Le code postale est invalide';
+        }
+
+        if ($city === false) {
+            $errors[] = 'La ville est invalide';
+        }
+
+        if ($country === false) {
+            $errors[] = 'Le pays est invalide';
+        }
+
+        if ($birthdate === false) {
+            $errors[] = 'La date de naissance est invalide';
+        }
+
         if (!preg_match("((\+33|0|0033)[1-9]\d{8})", $phone)) {
             $errors[] = 'Le téléphone est invalide';
         }
@@ -160,11 +180,11 @@ class CardController extends CoreController
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "Invalid email format";
+            $errors[] = "L'email est invalide";
         }
 
         if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i", $url)) {
-            $errors[] = "Invalid URL";
+            $errors[] = "L'URL' est invalide";
         }
 
         return $errors;
