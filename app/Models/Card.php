@@ -7,19 +7,42 @@ use PDO;
 
 class Card extends CoreModel
 {
-    protected $id;
+    /** @var string */
     protected $civility;
+
+    /** @var string */
     protected $lastname;
+
+    /** @var string */
     protected $firstname;
+
+    /** @var string */
     protected $address;
+
+    /** @var int */
     protected $zipcode;
+
+    /** @var string */
     protected $city;
+
+    /** @var string */
     protected $country;
+
+    /** @var string */
     protected $birthdate;
+
+    /** @var string */
     protected $phone;
+
+    /** @var string */
     protected $fax;
+
+    /** @var string */
     protected $email;
+
+    /** @var string */
     protected $url;
+
     protected static function tableName(): string
     {
         return 'card';
@@ -264,26 +287,5 @@ class Card extends CoreModel
 
         return $this;
     }
-
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
     
 }

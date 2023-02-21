@@ -10,51 +10,48 @@
 
     $router->setBasePath( $_SERVER['BASE_URI'] );
 
+    //--------------------------------------------
+    // Routes
+    //--------------------------------------------
+
     $router->map( "GET", "/", [ 
       "method"     => "home", 
       "controller" => "App\Controllers\MainController" 
     ], "main-home" );
 
-    //--------------------------------------------
-    // Routes
-    //--------------------------------------------
-
-    // $router->map( "GET", "/list", [ 
-    //   "method"     => "list", 
-    //   "controller" => "App\Controllers\CardController" 
-    // ], "card-list" );
-
-    $router->map( "POST", "/create", [ 
-      "method"     => "create", 
-      "controller" => "App\Controllers\CardController" 
-    ],"card-create" );
-
-    $router->map( "GET", "/read/[i:card_id]", [ 
+    $router->map( "GET", "/read/[i:id]", [ 
       "method"     => "read", 
       "controller" => "App\Controllers\CardController" 
     ], "card-read" );
+
+    $router->map( "GET", "/add", [ 
+      "method"     => "form", 
+      "controller" => "App\Controllers\CardController" 
+    ],"card-add" );
+
+    $router->map( "POST", "/add", [ 
+      "method"     => "record", 
+      "controller" => "App\Controllers\CardController" 
+    ],"card-create" );
     
-    $router->map( "PATCH", "/update/[i:card_id]", [ 
-      "method"     => "update", 
+    $router->map( "GET", "/edit/[i:id]", [ 
+      "method"     => "form", 
+      "controller" => "App\Controllers\CardController" 
+    ], "card-edit");
+
+    $router->map( "POST", "/edit/[i:id]", [ 
+      "method"     => "record", 
       "controller" => "App\Controllers\CardController" 
     ], "card-update");
 
 
-    $matchingRouteInfos = $router->match();
+    $match = $router->match();
 
     //==============================================
     // DISPATCHER
     //==============================================
+    $dispatcher = new Dispatcher($match, ErrorController::class . '::err404');
 
-    if( $matchingRouteInfos === false )
-    {
-      http_response_code( 404 );
-      exit( "404 Not Found" );
-    }
-
-    $controllerToInstantiate = $matchingRouteInfos['target']['controller'];
-    $methodToCall            = $matchingRouteInfos['target']['method'];
-
-    $controller = new $controllerToInstantiate();
-
-    $controller->$methodToCall( $matchingRouteInfos['params'] );
+    $dispatcher->setControllersNamespace('App\Controllers');
+    
+    $dispatcher->dispatch();
