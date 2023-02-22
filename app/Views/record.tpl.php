@@ -15,19 +15,17 @@ else {
     <?php
 }
 
+    if (isset($errors) && is_array($errors)) {
+        foreach ($errors as $error) {
+        ?>
+            <div class="main-errors"><?= $error ?></div>
+        <?php }
+    }
+
 ?>
 
+
 <form action="" method="POST" class="main-form">
-    <?php   
-        if (isset($errors) && is_array($errors)) {
-            var_dump($error);
-            foreach ($errors as $error) {
-            ?>
-                <div><?= $error ?></div>
-                <?php
-            }
-        }
-    ?>
 
     <div>
       <p>Civilité: &#42;</p>

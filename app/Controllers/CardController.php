@@ -62,8 +62,6 @@ class CardController extends CoreController
             $email,
             $url,
         );
-        // TODO erros + validations
-        var_dump($errors);
 
         $card = $id === null ? new Card() : Card::find($id);
         $card->setCivility($civility);
@@ -102,6 +100,7 @@ class CardController extends CoreController
     private function displayForm(?Card $card = null, array $errors = []) {
         $this->show("record", [
             'card' => $card ?? new Card(),
+            'errors' => $errors,
         ]);
     }
     
